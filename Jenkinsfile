@@ -12,6 +12,7 @@ pipeline {
     stages {
         stage("check") {
             steps {
+                echo $BRANCH_NAME
                 checkout scm
             }
         }
