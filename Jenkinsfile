@@ -27,8 +27,8 @@ pipeline {
         }
         stage("deploy") {
             steps{
-                sh 'docker stop gorchakovda/ws:0.1'
-                sh 'docker rmi gorchakovda/ws:0.1'
+                sh 'docker stop ws:0.1'
+                sh 'docker rmi ws:0.1'
                 sh 'docker run -d --name ws --expose 80:80 gorchakovda/ws:0.1'
             }
         }
