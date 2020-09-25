@@ -35,6 +35,7 @@ pipeline {
             steps {
                 waitUntil {
                     try {
+                        timeout(time: 15, unit: 'SECONDS')
                         sh "curl -s --head  --request GET  localhost:88 | grep '200'"
                         return true
                     }catch (Exception e) {
