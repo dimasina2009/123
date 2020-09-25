@@ -27,11 +27,11 @@ pipeline {
         }
         stage("deploy") {
             steps{
-                sh 'if [ ! "$(docker ps -q -f name=ws)" ]; then
-                    if [ "$(docker ps -aq -f status=exited -f name=<name>)" ]; then
-                    docker rm ws
-                    fi
-                    docker run -d --name ws -p 80:80 gorchakovda/ws:0.1
+                sh 'if [ ! "$(docker ps -q -f name=ws)" ]; then\
+                    if [ "$(docker ps -aq -f status=exited -f name=<name>)" ]; then\
+                    docker rm ws\
+                    fi\
+                    docker run -d --name ws -p 80:80 gorchakovda/ws:0.1\
                     fi'
             }
         }
