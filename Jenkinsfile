@@ -7,7 +7,7 @@ pipeline {
         timestamps()
     }
     environment {
-        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+        BRANCH_NAME = "${GIT_BRANCH}"
     }
     stages {
         stage("check") {
@@ -17,7 +17,7 @@ pipeline {
         }
         stage("var") {
             steps {
-                echo $BRANCH_NAME
+                echo "${env.BRANCH_NAME}"
             }
         }
         stage("one") {
