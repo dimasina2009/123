@@ -45,7 +45,8 @@ pipeline {
         }
         stage("branch") {
             steps {
-                echo scmVars.GIT_BRANCH
+                def branchName = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                echo branchName
             }
         }
     }
