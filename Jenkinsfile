@@ -29,7 +29,7 @@ pipeline {
             steps{
 //                sh 'docker stop ws'
                 sh 'docker container prune -f'
-                sh 'docker run -d --name ws --expose 80:80 gorchakovda/ws:0.1'
+                sh 'docker run -d --name ws -p 80:80 gorchakovda/ws:0.1'
             }
         }
     }
