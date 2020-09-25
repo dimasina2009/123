@@ -22,10 +22,6 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker_hub_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
-            }
-        }
-        stage("push") {
-            steps{
                 sh 'docker push gorchakovda/ws:0.1'
             }
         }
