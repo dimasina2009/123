@@ -14,7 +14,7 @@ pipeline {
         }
         stage("one") {
             steps{
-                sh 'docker build -t 123/ws:0.1 .'
+                sh 'docker build -t gorchakovda/ws:0.1 .'
             }
         }
         stage("docker login") {
