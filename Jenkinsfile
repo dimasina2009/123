@@ -27,7 +27,7 @@ pipeline {
         }
         stage("deploy") {
             steps{
-//               sh 'docker rm -f ws'
+                sh 'docker rm -f ws'
                 sh 'docker run -d --name ws -p 80:80 gorchakovda/ws:0.1'
             }
         }
