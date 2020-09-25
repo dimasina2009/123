@@ -7,13 +7,17 @@ pipeline {
         timestamps()
     }
     environment {
-        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
-        echo $BRANCH_NAME
+        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}
     }
     stages {
         stage("check") {
             steps {
                 checkout scm
+            }
+        }
+        stage("var") {
+            steps {
+                echo $BRANCH_NAME
             }
         }
         stage("one") {
