@@ -24,6 +24,11 @@ pipeline {
                 }
                 sh 'docker push gorchakovda/ws:0.1'
             }
+        stage("deploy") {
+            steps{
+                sh 'docker run gorchakovda/ws:0.1'
+            }
+        }
         }
     }
 }
