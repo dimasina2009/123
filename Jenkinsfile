@@ -27,8 +27,7 @@ pipeline {
         }
         stage("deploy") {
             steps{
-                sh 'docker rm -f ws &>/dev/null && echo \'Removed old container\''
-                //sh 'if [ "$(docker ps | grep ws)"];then docker rm ws fi'
+//               sh 'docker rm -f ws'
                 sh 'docker run -d --name ws -p 80:80 gorchakovda/ws:0.1'
             }
         }
