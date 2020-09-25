@@ -45,7 +45,7 @@ pipeline {
         }
         stage("branch") {
             steps {
-                echo ${env.BRANCH_NAME}
+                echo GIT_BRANCH %GIT_BRANCH%
             }
         }
     }
