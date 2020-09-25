@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("one") {
             steps{
-                sh 'docker build .'
+                sh 'docker build -t 123/ws:0.1 .'
             }
         }
     }
