@@ -27,8 +27,20 @@ pipeline {
         }
         stage("deploy") {
             steps{
-                //sh 'docker rm -f ws'
+                sh 'docker rm -f ws'
                 sh 'docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
+            }
+        }
+        stage("tests") {
+            steps {
+                waitUntil {
+                    try {
+                        new URL("http://localhost:88").getText()
+                        return true
+                    }catch (Exception e) {
+                        return false
+                    }
+                }
             }
         }
     }
