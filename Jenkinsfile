@@ -27,7 +27,7 @@ pipeline {
         }
         stage("deploy") {
             steps{
-                sh 'docker run -d --name ws gorchakovda/ws:0.1'
+                sh 'docker run -d --name ws --expose 80:80 gorchakovda/ws:0.1'
             }
         }
     }
