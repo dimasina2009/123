@@ -6,6 +6,9 @@ pipeline {
     options {
         timestamps()
     }
+    environment {
+        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+    }
     stages {
         stage("check") {
             steps {
@@ -41,11 +44,6 @@ pipeline {
                         return false
                     }
                 }
-            }
-        }
-        stage("branch") {
-            node {
-                echo env.BRANCH_NAME
             }
         }
     }
