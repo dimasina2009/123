@@ -8,11 +8,11 @@ pipeline {
     }
     environment {
         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+        echo $BRANCH_NAME
     }
     stages {
         stage("check") {
             steps {
-                echo $BRANCH_NAME
                 checkout scm
             }
         }
