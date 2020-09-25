@@ -33,7 +33,7 @@ pipeline {
         }
         stage("tests") {
             steps {
-                waitUntil {
+                script {
                     try {
                         sh "curl -s --head  --request GET  http://localhost:88 | grep '200'"
                         return true
