@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("check") {
             steps {
-                checkout scm
+                scmVars = checkout scm
             }
         }
         stage("one") {
@@ -45,7 +45,7 @@ pipeline {
         }
         stage("branch") {
             steps {
-                echo ${GIT_BRANCH}
+                echo scmVars.GIT_BRANCH
             }
         }
     }
