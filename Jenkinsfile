@@ -15,11 +15,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage("var") {
-            steps {
-                echo "${env.BRANCH_NAME}"
-            }
-        }
         stage("one") {
             steps{
                 sh 'docker build -t gorchakovda/ws:0.1 .'
@@ -34,6 +29,9 @@ pipeline {
             }
         }
         stage("deploy") {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
+            }
             steps{
                 sh 'docker rm -f ws'
                 sh 'docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
