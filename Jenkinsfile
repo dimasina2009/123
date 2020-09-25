@@ -30,7 +30,7 @@ pipeline {
         }
         stage("deploy") {
             when {
-                expression { env.BRANCH_NAME == 'master' }
+                expression { env.BRANCH_NAME == 'origin/master' }
             }
             steps{
                 sh 'docker rm -f ws'
