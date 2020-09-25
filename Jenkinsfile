@@ -31,5 +31,15 @@ pipeline {
                 sh 'docker run -d --name ws -p 80:80 gorchakovda/ws:0.1'
             }
         }
+        stage("tests") {
+            steps{
+                try {         
+                    new URL("$appuri/gameoflife").getText()
+                    return true
+                } catch (Exception e) {
+                    return false
+                }
+            }
+        }
     }
 }
