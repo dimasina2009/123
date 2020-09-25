@@ -27,7 +27,8 @@ pipeline {
         }
         stage("deploy") {
             steps{
-                sh '[ ! "$(docker ps | grep ws)" ] && docker run -d --name ws -p 80:80 gorchakovda/ws:0.1'
+                sh 'if [ "$(docker ps | grep ws)"];then docker rm ws'
+                sh 'docker run -d --name ws -p 80:80 gorchakovda/ws:0.1'
             }
         }
     }
