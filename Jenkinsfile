@@ -34,7 +34,7 @@ pipeline {
         stage("tests") {
             steps{
                 try {         
-                    new URL("$appuri/gameoflife").getText()
+                    new URL(http://localhost).getText()
                     return true
                 } catch (Exception e) {
                     return false
