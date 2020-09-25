@@ -35,7 +35,7 @@ pipeline {
             steps {
                 waitUntil {
                     try {
-                        new URL("http://localhost:88").getText()
+                        sh "curl -s --head  --request GET  localhost:88 | grep '200'"
                         return true
                     }catch (Exception e) {
                         return false
