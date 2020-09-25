@@ -8,9 +8,7 @@ pipeline {
     }
     stages {
         stage("check") {
-            steps {
                 scmVars = checkout scm
-            }
         }
         stage("one") {
             steps{
