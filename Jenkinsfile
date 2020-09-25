@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("one") {
             steps{
-                sh 'docker build --tag 123/ws:0.1 .'
+                sh 'docker build .'
             }
         }
     }
