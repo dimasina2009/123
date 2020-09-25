@@ -8,7 +8,7 @@ pipeline {
     }
     stages {
         stage("check") {
-            node {
+            steps {
                 checkout scm
             }
         }
@@ -43,10 +43,10 @@ pipeline {
                 }
             }
         }
-//        stage("branch") {
-//            node {
-//                echo env.BRANCH_NAME
-//            }
-//        }
+        stage("branch") {
+            node {
+                echo env.BRANCH_NAME
+            }
+        }
     }
 }
