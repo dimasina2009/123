@@ -43,10 +43,10 @@ pipeline {
                 }
             }
         }
-        stage("branch") {
-            steps {
-                sh 'echo $BRANCH_NAME'
-            }
-        }
+//        stage("branch") {
+//            node {
+//                echo env.BRANCH_NAME
+//            }
+//        }
     }
 }
