@@ -33,6 +33,15 @@ pipeline {
                 expression { env.BRANCH_NAME == 'origin/master' }
             }
             steps{
+                    sh 'docker rm -f ws'
+                    sh 'docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
+            }
+        }
+        stage("deploy dev") {
+            when {
+                expression { env.BRANCH_NAME != 'origin/master' }
+            }
+            steps{
                 sshagent (credentials : ['server_prod_cred']) {
                     sh 'ssh gd@CentOS docker rm -f ws'
                     sh 'ssh gd@CentOS docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
