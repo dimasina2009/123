@@ -28,13 +28,14 @@ pipeline {
                 sh 'docker push gorchakovda/ws:0.1'
             }
         }
-        stage("deploy") {
+        stage("deploy prod") {
             when {
                 expression { env.BRANCH_NAME == 'origin/master' }
             }
             steps{
-                sh 'docker rm -f ws'
-                sh 'docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
+                sshagent(credentials : ['server_prod_cred']) {
+                    sh 'ssh root@localhost docker rm -f ws'
+                    sh 'ssh root@localhost docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
             }
         }
         stage("tests") {
