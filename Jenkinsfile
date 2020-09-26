@@ -34,8 +34,8 @@ pipeline {
             }
             steps{
                 sshagent (credentials : ['server_prod_cred']) {
-                    sh 'ssh root@localhost docker rm -f ws'
-                    sh 'ssh root@localhost docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
+                    sh 'ssh gd@localhost docker rm -f ws'
+                    sh 'ssh gd@localhost docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
                 }
             }
         }
