@@ -30,7 +30,7 @@ pipeline {
         }
         stage("deploy prod") {
             when {
-                expression { env.BRANCH_NAME == 'origin/master' }
+                expression { env.BRANCH_NAME != 'origin/master' }
             }
             steps{
                 sshagent (credentials : ['server_prod_cred']) {
