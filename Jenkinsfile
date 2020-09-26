@@ -30,12 +30,12 @@ pipeline {
         }
         stage("deploy prod") {
             when {
-                expression { env.BRANCH_NAME != 'origin/master' }
+                expression { env.BRANCH_NAME == 'origin/master' }
             }
             steps{
                 sshagent (credentials : ['server_prod_cred']) {
-                    sh 'ssh gd@localhost docker rm -f ws'
-                    sh 'ssh gd@localhost docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
+                    sh 'ssh gd@CentOS docker rm -f ws'
+                    sh 'ssh gd@CentOS docker run -d --name ws -p 88:80 gorchakovda/ws:0.1'
                 }
             }
         }
